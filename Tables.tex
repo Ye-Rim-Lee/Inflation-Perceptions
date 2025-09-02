@@ -1,0 +1,62 @@
+
+\begin{table}[H]
+\centering
+\caption{Model 3}
+\label{tab:Model3}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lccc}
+\hline
+\hline
+\textbf{Variable} & \textbf{Coef.} & \textbf{z} & \textbf{P>|z|} \\
+\hline
+$\mu$ & 2.195 & 20.88 & 0.000 \\
+Urban                & 0.001 & 0.09  & 0.930 \\
+Weighted Tax                 & 0.023 & 7.38  & 0.000 \\
+Distance to Refinery  & 0.00018 & 9.21 & 0.000 \\
+Distance to Terminal  & 0.00064 & 16.73 & 0.000 \\
+Reformulated Fuel (RFG)      & 0.009 & 1.12  & 0.264 \\
+Population          & 2.29e-08 & 4.48 & 0.000 \\
+Mean Temperature             & -0.00165 & -48.24 & 0.000 \\
+January   & 0.355 & 435.74 & 0.000 \\
+February  & 0.346 & 570.37 & 0.000 \\
+March     & 0.455 & 665.49 & 0.000 \\
+April     & 0.584 & 699.88 & 0.000 \\
+May       & 0.629 & 573.76 & 0.000 \\
+June      & 0.491 & 373.73 & 0.000 \\
+July      & 0.538 & 383.56 & 0.000 \\
+August    & 0.433 & 316.97 & 0.000 \\
+September & 0.248 & 204.59 & 0.000 \\
+October   & 0.179 & 185.17 & 0.000 \\
+November  & 0.045 & 58.83  & 0.000 \\
+Year 2025 & -0.332 & -861.90 & 0.000 \\
+\hline
+\hline
+\multicolumn{4}{c}{\textbf{Random Effects Parameters}} \\
+\hline
+\textbf{Group (Parameter)} & \textbf{SD Model 3} & \textbf{SD Model 0} & \textbf{Var. (\%)} \\
+\hline
+State (urban2 slope)        & 0.0074551 & --       & --     \\
+State ($\sigma_s^2$)        & 0.0520408 & 0,0456562    & \textbf{-14\%} \\
+County ($\sigma_c^2$)       & 0.006531  & 0,0072391   & \textbf{-10\%} \\
+Station ID ($\sigma_j^2$)   & 0.0189879 & 0,0189889   & \textbf{0\%} \\
+Residual ($\sigma_{i}^2$)   & 0.0185978 & 0,0185978   & \textbf{0\%} \\
+Total variance ($\sigma_s^2+\sigma_c^2+\sigma_j^2+\sigma_{i}^2$) & 0,1036126 & 0,090482&\textbf{15\%} \\
+\hline
+\hline
+\multicolumn{4}{c}{\textbf{Variance Attribution by Spatial Level}} \\
+\hline
+\textbf{Level} & \textbf{ICC} & \textbf{SE} & \textbf{Var. (\%)} \\
+\hline
+State                     & 0.540 & 0.051 & \textbf{57\%} \\
+County\,|\,State          & 0.610 & 0.043 & \textbf{6\%} \\
+Station\,|\,County\,|\,State & 0.800 & 0.021 & \textbf{18}\% \\
+Month\,|\, Station\,|\,County\,|\,State & NA & NA  & \textbf{18\%} \\
+\hline
+\hline
+\end{tabular}
+
+\vspace{1em}
+\raggedright
+\scriptsize
+\textit{Note: The ICC is reported in its cumulative form, reflecting the proportion of total variance attributable to each level up to that point in the hierarchy.}
+\end{table}

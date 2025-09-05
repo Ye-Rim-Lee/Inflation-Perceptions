@@ -1,0 +1,140 @@
+\documentclass[preprint,12pt,authoryear]{elsarticle}
+\biboptions{authoryear,round,semicolon}
+% \citet{smith2020}  % Smith (2020)
+% \citep{smith2020}  % (Smith, 2020)
+
+
+
+\usepackage[english]{babel}
+\usepackage{amssymb,amsmath,amsfonts,amsthm}
+\usepackage[most]{tcolorbox}
+\newtheorem{lemma}{Lemma}
+\usepackage{threeparttable}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage{bbm}
+\usepackage[most]{tcolorbox}
+\usepackage{amsmath, amssymb}
+
+\usepackage{soul}
+\usepackage{adjustbox}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{threeparttable}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, decorations.pathreplacing, shapes.geometric}
+\usepackage{graphicx} 
+
+
+\journal{Journal XYZ}
+
+\hypersetup{
+    colorlinks=true,
+    allcolors=black
+}
+
+
+\begin{document}
+
+% Define a custom highlight box
+\tcbset{highlight/.style={colback=yellow!25!white, colframe=yellow!75!black, 
+    sharp corners, boxrule=0.5mm, width=\textwidth, enlarge left by=-5mm, 
+    enlarge right by=-5mm}}
+
+\begin{frontmatter}
+
+% Title & Authors
+\title{Partisanship and Inflation Perceptions: Evidence from Michigan, 2019–2024}
+
+\author[1]{NaN\corref{cor1}
+}
+\ead{NaN@gmail.cl}
+
+
+
+\address[1]{NaN}
+
+
+
+
+\begin{abstract}
+This paper analyzes determinants of inflation perceptions among 1,000 Michigan residents surveyed in 2024. Ordered logistic regressions show that partisanship is the strongest predictor: Republicans and Trump supporters are significantly more likely to report higher prices, while Democrats and Harris supporters are less likely. Gender also matters, with women about 1.7–1.9 times more likely than men to perceive price increases. By contrast, county-level economic conditions (manufacturing, tourism, unemployment), age, income, and rural–urban status have no significant effects. These findings highlight the politicized and gendered nature of inflation perceptions, with limited influence from local economic fundamentals.
+\end{abstract}
+
+
+\begin{keyword}
+
+\end{keyword}
+
+\end{frontmatter}
+
+\newpage
+
+
+\section{Introduction}
+
+Inflation perceptions have become increasingly politicized in recent years, especially in battleground states such as Michigan. While official statistics document price dynamics, what matters for political behavior is how individuals perceive these changes. Prior research shows that partisan identity often colors economic perceptions, yet less is known about how local economic context and demographics intersect with these political divides. We address this gap with a new survey of 1,000 Michigan residents conducted in 2024, asking respondents how they perceived price changes over the past five years. We analyze the drivers of these perceptions, with attention to partisanship, presidential vote choice, gender, and county-level economic conditions.
+\newpage
+
+\section{Data and Methodology}
+We fielded an original survey of 1,000 adult residents of Michigan in 2024. Respondents were asked to evaluate whether prices over the past five years had risen, stayed the same, or fallen. We estimate ordered logistic regression models of perceived price change, including controls for political affiliation (party ID and 2024 presidential choice), gender, age, income, rural–urban commuting area (RUCA4), and county-level economic indicators (manufacturing share, accommodation/tourism share, unemployment rate). Standard errors are clustered at the county level. Model fit is assessed using Pseudo R².
+
+
+
+\begin{center}
+\textbf{FIGURE 1 AROUND HERE}
+\end{center}
+
+
+\subsection{Unconditional Variance Decomposition}
+
+We begin our empirical analysis by estimating an unconditional variance components model that decomposes total price variation across the nested geographic hierarchy, hereafter referred to as \textbf{Model 0}:
+
+\vspace{1em}
+
+
+\begin{equation}
+P_{mjcs} = \mu + \{u_s + v_{cs} + w_{jcs} + \varepsilon_{mjcs}\}
+\label{eq:null_model}
+\end{equation}
+
+Here, \( P_{mjcs} \) denotes the median gasoline price in a given year-month \( m \), observed at station \( j \), located in county \( c \), within state \( s \). 
+
+\section{Results}
+Our models reveal strong partisan and gender effects. Republicans and Trump supporters are substantially more likely to report that prices are higher, while Democrats and Harris supporters are less likely, all else equal. Substituting presidential choice for party identification improves model fit (Pseudo R² from 0.08 to 0.14). Gender also plays a consistent role: women have 1.7–1.9 times higher odds than men of perceiving price increases. In contrast, county-level economic indicators—manufacturing share, accommodation/tourism share, and unemployment rate—show no significant effects. Similarly, age, income, and rural–urban classification are not associated with inflation perceptions.
+
+\section{Discussion}
+These findings highlight the politicized and socially differentiated nature of inflation perceptions. Political alignment emerges as the strongest predictor, with presidential choice especially salient, suggesting that contemporary electoral dynamics shape how citizens interpret economic realities. Gender differences also matter, pointing to possible roles of consumption responsibilities, household budgeting, or broader narratives about economic insecurity. The lack of significant effects for local economic conditions underscores the limited influence of objective structural factors once politics and demographics are accounted for. Together, the results reinforce the idea that perceptions of inflation are not neutral reflections of economic experience but are filtered through identity and partisan lenses, with important implications for economic voting and political communication in swing states like Michigan.
+
+% \appendix
+% \clearpage
+
+% \section{Tables}
+% \input{1_Tables}
+% \label{appendix:A}
+
+% \clearpage
+% \section{Figures}
+% \input{1_Figures}
+% \label{appendix:B}
+
+
+\newpage
+
+\bibliographystyle{apalike}
+\bibliography{Bibliography}
+
+
+\end{document}

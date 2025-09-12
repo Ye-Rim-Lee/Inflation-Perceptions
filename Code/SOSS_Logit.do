@@ -7,9 +7,8 @@ set scheme s
 
 
 **# - Import Survey Data
-gl path1 "C:\Users\Yerim Lee\OneDrive - Michigan State University\1. MSU AFRE PhD\4. Research\231214 Rural Inflation\MAPPR\SOSS"
+gl path1 "/Users/YerimLee/Documents/GitHub/Inflation-Perceptions/Data"
 cd "$path1"
-//use "$path1/infrographics.dta" 	// raw data
 use "$path1/logit.dta"			// processed data
 
 **# 1. Data preprocessing
@@ -211,6 +210,27 @@ putexcel (A1) = etable
 putexcel set Overall_Prices, replace
 ologit Q5years_5 age i.RUCA4 i.income4 i.polaff3 i.gender, baselevels 
 putexcel (A1) = etable
+
+
+**# JEPOP
+tab PO1 
+
+putexcel set Q5_approval_odd, replace
+ologit Q5years_5 age i.RUCA4 i.income4 i.PO1 i.gender, or baselevels 
+putexcel (A1) = etable
+
+putexcel set Q5_approval, replace
+ologit Q5years_5 age i.RUCA4 i.income4 i.PO1 i.gender, baselevels 
+putexcel (A1) = etable
+
+putexcel set Q5_vote_odd, replace
+ologit Q5years_5 age i.RUCA4 i.income4 i.ippsr120p i.gender, or baselevels 
+putexcel (A1) = etable
+
+putexcel set Q5_vote, replace
+ologit Q5years_5 age i.RUCA4 i.income4 i.ippsr120p i.gender, baselevels 
+putexcel (A1) = etable
+
 
 	
 	

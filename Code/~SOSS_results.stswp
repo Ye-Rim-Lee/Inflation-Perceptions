@@ -51,7 +51,7 @@ if _rc {
 esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
 	b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) wide ///
 	label mtitles("Determinants of Perceived Inflation - Overall Price") ///
-	prehead("\setlength{\tabcolsep}{3pt}") obslast
+	obslast
 
 
 

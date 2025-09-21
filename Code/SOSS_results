@@ -1,9 +1,10 @@
 
 **# - Import Survey Data
 clear all
-gl path1 "/Users/YerimLee/Documents/GitHub/Inflation-Perceptions/Data"
-cd "$path1"
-use "$path1/logit.dta", clear			// processed data
+gl inputpath "/Users/YerimLee/Documents/GitHub/Inflation-Perceptions/Data"
+gl outputpath "/Users/YerimLee/Documents/GitHub/Inflation-Perceptions/Output"
+
+use "$inputpath/logit.dta", clear			// processed data
 set more off
 
 
@@ -39,9 +40,9 @@ estimates dir
 cap which esttab
 if _rc di as error "esttab not found. Install with: ssc install estout"
 
-esttab m_Q5years_5 using "table_main_overall.tex", replace label ///
+esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace label ///
     eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress ///
-    title("Determinants of Perceived Inflation (Overall, Ordered Logit)")
+        title("Determinants of Perceived Inflation (Overall) \label{tab:ologit-pol}")
 
 **# ========= 3) FIGURE A: Homeownership across five domains
 tempfile home_pp

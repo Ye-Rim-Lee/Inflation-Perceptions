@@ -42,7 +42,7 @@ if _rc di as error "esttab not found. Install with: ssc install estout"
 
 esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace label ///
     eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress ///
-    title("Determinants of Perceived Inflation (Overall, Ordered Logit)")
+        title("Determinants of Perceived Inflation (Overall) \label{tab:ologit-pol}")
 
 **# ========= 3) FIGURE A: Homeownership across five domains
 tempfile home_pp
@@ -83,7 +83,7 @@ twoway ///
  ytitle("Adjusted probability, outcome=5") ///
  xtitle("Price domain") xlabel(, valuelabel angle(0)) ///
  title("Homeownership and perceived inflation across domains")
-graph export "$outputpath/fig_homeowner_across_domains.png", width(2000) replace	
+graph export "fig_homeowner_across_domains.png", width(2000) replace	
 	
 **# ========= 4) FIGURE B: Party differences across five domains
 preserve
@@ -120,18 +120,18 @@ graph bar (mean) p, over(party_id, label(angle(30))) over(outcome_id) ///
     blabel(bar, format(%4.2f)) ///
     ytitle("Adjusted probability, outcome=5") ///
     title("Partisanship and perceived inflation across domains") legend(off)
-graph export "$outputpath/fig_party_across_domains.png", width(2000) replace
+graph export "fig_party_across_domains.png", width(2000) replace
 restore
 
 **# ========= APPENDIX TABLE: all five outcomes side-by-side (ORs)
-esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "$outputpath/appendix_all5.tex", replace ///
+esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "appendix_all5.tex", replace ///
     eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress label ///
     title("Determinants of Perceived Inflation across Five Domains (Ordered Logit)") ///
     mtitles("Grocery" "Gas" "Home" "Restaurant" "Overall")
 	
 	
 **# ========= key covariates only (cleaner appendix)
-esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "$outputpath/appendix_keycovars.tex", replace ///
+esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "appendix_keycovars.tex", replace ///
     eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress label ///
     title("Key Covariates across Five Domains") mtitles("Grocery" "Gas" "Home" "Restaurant" "Overall") ///
     keep( ///

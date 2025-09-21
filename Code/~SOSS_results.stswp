@@ -47,13 +47,11 @@ if _rc {
     di as error "esttab not found. Install with: ssc install estout"
 }
 
-esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace booktabs wide ///
-    cells("b(star fmt(3)) t(par fmt(2))") ///
-    stats(N r2_a, fmt(%9.0fc %9.3f) labels("Observations" "Adj. R-squared")) ///
-    starlevels(* 0.10 ** 0.05 *** 0.01) ///
-    label ///
-    title("Determinants of Perceived Inflation - Overall Price") ///
-    addnotes("t-statistics in parentheses" "@starlegend")
+
+esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
+	se star(* 0.10 ** 0.05 *** 0.01) ///
+	label mtitles("Determinants of Perceived Inflation - Overall Price") obslast
+
 
 
 #delimit ;

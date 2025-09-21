@@ -46,9 +46,38 @@ cap which esttab
 if _rc {
     di as error "esttab not found. Install with: ssc install estout"
 }
-esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace label ///
-    b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) wide ///
-    title(Determinants of Perceived Inflation - Overall Price)
+
+
+esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
+	se star(* 0.10 ** 0.05 *** 0.01) ///
+	label mtitles("Determinants of Perceived Inflation - Overall Price") obslast
+
+
+
+#delimit ;
+esttab m_Q5years_5 using "$outputpath/table_main_overall.tex",
+    replace booktabs wide    
+    /* what to print in each cell */
+    cells(b(fmt(3) star) se(fmt(3) par)) 
+    starlevels(* 0.05 ** 0.01 *** 0.001)
+    /* footer stats */
+    stats(N, fmt(%18.0g) labels("Observations"))
+    /* layout/labels */
+    varwidth(18) modelwidth(12) abbrev
+    mlabels(, depvar) numbers
+    collabels(none) notype level(95) interaction(" # ")
+    /* pretty LaTeX wrapper */
+    prehead("\begin{table}[H]\centering"
+            "\caption{Determinants of Perceived Inflation - Overall Price}"
+			"\label{tab1}"
+            "\begin{tabular}{l*{@M}{c}}\toprule")
+    posthead("\midrule")
+    prefoot("\midrule")
+    postfoot("\bottomrule\end{tabular}\end{table}")
+    /* minor cosmetics similar to your reference */
+    delimiter(" ") 
+;
+#delimit cr
 
 **# 3) FIGURE A: Homeownership across five domains
 tempfile home_pp

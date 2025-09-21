@@ -1,5 +1,10 @@
+/*
+Author: Ye-Rim Lee
+Date: 09/21/2025
+Purpose: Tables and Figures for JEPOP draft using SOSS
+*/
 
-**# - Import Survey Data
+**# Import Survey Data
 clear all
 gl inputpath "/Users/YerimLee/Documents/GitHub/Inflation-Perceptions/Data"
 gl outputpath "/Users/YerimLee/Documents/GitHub/Inflation-Perceptions/Output"
@@ -26,7 +31,7 @@ local lab_Q5years_4 "Restaurant"
 local lab_Q5years_5 "Overall"
 
 
-**# ========= 1) Fit models 
+**# 1) Fit models 
 
 foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
     quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ ib3.polaff3 i.gender ib2.home, or baselevels vce(robust)
@@ -36,15 +41,16 @@ foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
 * Verify
 estimates dir
 
-**# ========= 2) Main Table (flagship)
+**# 2) Main Table (flagship)
 cap which esttab
-if _rc di as error "esttab not found. Install with: ssc install estout"
-
+if _rc {
+    di as error "esttab not found. Install with: ssc install estout"
+}
 esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace label ///
-    eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress ///
-        title("Determinants of Perceived Inflation (Overall) \label{tab:ologit-pol}")
+    b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) wide ///
+    title("Determinants of Perceived Inflation (Overall, Ordered Logit)")
 
-**# ========= 3) FIGURE A: Homeownership across five domains
+**# 3) FIGURE A: Homeownership across five domains
 tempfile home_pp
 tempname PH
 postfile `PH' str20 outcome str40 home_lbl double p lci uci using `home_pp', replace
@@ -85,7 +91,7 @@ twoway ///
  title("Homeownership and perceived inflation across domains")
 graph export "fig_homeowner_across_domains.png", width(2000) replace	
 	
-**# ========= 4) FIGURE B: Party differences across five domains
+**# 4) FIGURE B: Party differences across five domains
 preserve
 tempfile party_pp
 tempname PP
@@ -123,14 +129,14 @@ graph bar (mean) p, over(party_id, label(angle(30))) over(outcome_id) ///
 graph export "fig_party_across_domains.png", width(2000) replace
 restore
 
-**# ========= APPENDIX TABLE: all five outcomes side-by-side (ORs)
+**# APPENDIX TABLE: all five outcomes side-by-side (ORs)
 esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "appendix_all5.tex", replace ///
     eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress label ///
     title("Determinants of Perceived Inflation across Five Domains (Ordered Logit)") ///
     mtitles("Grocery" "Gas" "Home" "Restaurant" "Overall")
 	
 	
-**# ========= key covariates only (cleaner appendix)
+**# key covariates only (cleaner appendix)
 esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "appendix_keycovars.tex", replace ///
     eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress label ///
     title("Key Covariates across Five Domains") mtitles("Grocery" "Gas" "Home" "Restaurant" "Overall") ///

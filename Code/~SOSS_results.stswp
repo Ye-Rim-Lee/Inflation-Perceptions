@@ -66,7 +66,7 @@ esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
 			   cut3			"Cut 3" ///
 	)
 
-esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "appendix_all5.tex", replace ///
+esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "$outputpath/appendix_all5.tex", replace ///
     b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label nogaps ///
     title("Determinants of Perceived Inflation across all categories") ///
 	coeflabels(age "\textbf{Age}" ///

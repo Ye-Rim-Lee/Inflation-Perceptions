@@ -70,7 +70,7 @@
 
 
 \begin{abstract}
-This paper analyzes determinants of inflation perceptions among 1,000 Michigan residents surveyed in 2024. Ordered logistic regressions show that partisanship is the strongest predictor: Republicans and Trump supporters are significantly more likely to report higher prices, while Democrats and Harris supporters are less likely. Gender also matters, with women about 1.7–1.9 times more likely than men to perceive price increases. By contrast, county-level economic conditions (manufacturing, tourism, unemployment), age, income, and rural–urban status have no significant effects. These findings highlight the politicized and gendered nature of inflation perceptions, with limited influence from local economic fundamentals.
+This paper analyzes determinants of inflation perceptions among 1,000 Michigan residents surveyed in 2024, before the presidential election. Ordered logistic regressions show that political leaning is the strongest predictor: Republicans and Trump supporters are significantly more likely to report higher inflation, while Democrats and Harris supporters are less likely. Gender also matters, with women about 1.7–1.9 times more likely than men to perceive price increases. By contrast, county-level economic conditions (manufacturing, tourism, unemployment), age, income, and rural–urban status have no significant effects. These findings highlight the politicized and gendered nature of inflation perceptions, with limited influence from local economic fundamentals.
 \end{abstract}
 
 
@@ -85,50 +85,106 @@ This paper analyzes determinants of inflation perceptions among 1,000 Michigan r
 
 \section{Introduction}
 
-Inflation perceptions have become increasingly politicized in recent years, especially in battleground states such as Michigan. While official statistics document price dynamics, what matters for political behavior is how individuals perceive these changes. Prior research shows that partisan identity often colors economic perceptions, yet less is known about how local economic context and demographics intersect with these political divides. We address this gap with a new survey of 1,000 Michigan residents conducted in 2024, asking respondents how they perceived price changes over the past five years. We analyze the drivers of these perceptions, with attention to partisanship, presidential vote choice, gender, and county-level economic conditions.
-\newpage
+Inflation perceptions have become increasingly politicized in recent years, especially in battleground states such as Michigan. While official statistics document price dynamics, what matters for political behavior is how individuals perceive these changes. Prior research shows that partisan identity often colors economic perceptions, yet less is known about how local economic context and demographics intersect with these political divides. We address this gap with a survey of 1,000 Michigan residents conducted in 2024, asking respondents how they perceived price changes over the past five years. We analyze the drivers of these perceptions, with attention to partisanship, presidential vote choice, gender, and county-level economic conditions.
 
-\section{Data and Methodology}
-We fielded an original survey of 1,000 adult residents of Michigan in 2024. Respondents were asked to evaluate whether prices over the past five years had risen, stayed the same, or fallen. We estimate ordered logistic regression models of perceived price change, including controls for political affiliation (party ID and 2024 presidential choice), gender, age, income, rural–urban commuting area (RUCA4), and county-level economic indicators (manufacturing share, accommodation/tourism share, unemployment rate). Standard errors are clustered at the county level. Model fit is assessed using Pseudo R².
+\section{Inflation as a Political Issue}
+Inflation is not only an economic statistic. It is a lived, frequently discussed experience that shapes how citizens judge governments and parties. People encounter prices at the pump, the grocery aisle, and in rent, so they form views quickly and often with limited information. These views travel through media narratives and partisan discussion networks, which means perceptions can diverge from official indices and from each other.
 
-
-
-\begin{center}
-\textbf{FIGURE 1 AROUND HERE}
-\end{center}
+\begin{itemize}
+    \item PAPERS on political psychology on motivated reasoning and economic perceptions
+\end{itemize}
 
 
-\subsection{Unconditional Variance Decomposition}
+\section{Democratic Accountability and Biased Perceptions }
 
-We begin our empirical analysis by estimating an unconditional variance components model that decomposes total price variation across the nested geographic hierarchy, hereafter referred to as \textbf{Model 0}:
+Classic accounts of democratic accountability assume that voters reward or punish incumbents for economic performance that they observe with reasonable accuracy.
 
-\vspace{1em}
+\begin{itemize}
+    \item PAPERS on economic voting and partisan motivated reasoning
+\end{itemize}
 
 
-\begin{equation}
-P_{mjcs} = \mu + \{u_s + v_{cs} + w_{jcs} + \varepsilon_{mjcs}\}
-\label{eq:null_model}
-\end{equation}
 
-Here, \( P_{mjcs} \) denotes the median gasoline price in a given year-month \( m \), observed at station \( j \), located in county \( c \), within state \( s \). 
+
+\section{Michigan as a Strategic Case}
+Michigan serves as a compelling case study for how inflation perceptions intersect with political dynamics. As a competitive swing state, even small shifts in attitudes toward prices can tip statewide outcomes. The state’s economy is diverse: industrial and logistics corridors in the south contrast with tourism and service-oriented counties in the north. This variety produces different price environments, commuting patterns, and media markets, all of which shape how residents both experience and interpret inflation.
+
+Michigan’s strategic importance is further magnified by its growing role in presidential primaries. As of mid-2025, the Democratic Party is weighing Michigan as one of the earliest states in the 2028 primary schedule. Representative Debbie Dingell, who sits on the committee deciding the order, stressed that whichever state goes first draws disproportionate campaign attention, candidate visits, and national media focus. Should Michigan secure this position, it would become not just a swing state but a bellwether of campaign messaging—where inflation and cost-of-living concerns are likely to be spotlighted at the very outset of the national political calendar.
+
+Taken together, Michigan’s economic heterogeneity, households’ lived cost pressures, partisan political framing, and rising importance in national party strategy make it an especially instructive microcosm. It is a site where local economic structures, everyday struggles, and partisan identity interact, shaping both perceptions of inflation and their potential political consequences.
+
+
+\section{Survey}
+
+We collected original data on inflation perceptions using the State of the State Survey (SOSS), a long-running public opinion survey conducted by the Institute for Public Policy and Social Research (IPPSR) at Michigan State University. The SOSS has been widely used by scholars and policymakers to track public opinion in Michigan, and it provides a reliable platform for measuring political and economic attitudes. For this project, our survey module was fielded between September 23 and October 10, 2024.
+
+The survey relied on a mixed-mode design that combined online and phone interviews. This approach was adopted to reach respondents across different demographic and geographic groups. Online interviews are more effective for younger and urban residents, while phone interviews are useful for older participants and those living in rural areas. In total, 1,174 Michigan adults participated in the survey. The survey firm then used post-stratification matching to produce a final dataset of 1,000 respondents. This step ensured balance across age, gender, race, and region, thereby enhancing the representativeness of the sample.
+
+Our research design treats inflation as a political perception and situates it within Michigan’s economic and social diversity. Michigan is electorally competitive, and small shifts in public opinion can matter for statewide outcomes. The state also combines industrial and service-based economies, urban centers, suburban communities, and rural counties. This mixture provides an ideal case for evaluating how political identity, demographics, and local context interact to shape perceptions of inflation.
+
+The survey module addressed three guiding questions. First, who is most likely to perceive higher inflation, and how strongly is that perception associated with partisan identity compared to demographics and place of residence? Second, do perceptions align with county-level economic context, such as industry composition or unemployment, once political identity is controlled for, or are they primarily political in nature? Third, what are the implications for democratic accountability, defined here as the association between perceptions of inflation and evaluations of political leaders or institutions? These questions structure the empirical analysis presented in the following section.
+
 
 \section{Results}
-Our models reveal strong partisan and gender effects. Republicans and Trump supporters are substantially more likely to report that prices are higher, while Democrats and Harris supporters are less likely, all else equal. Substituting presidential choice for party identification improves model fit (Pseudo R² from 0.08 to 0.14). Gender also plays a consistent role: women have 1.7–1.9 times higher odds than men of perceiving price increases. In contrast, county-level economic indicators—manufacturing share, accommodation/tourism share, and unemployment rate—show no significant effects. Similarly, age, income, and rural–urban classification are not associated with inflation perceptions.
+Our models reveal strong association with party alignment and gender. Republicans and Trump supporters are substantially more likely to report that prices are higher than five years ago, while Democrats and Harris supporters are less likely, all else equal. Substituting presidential choice for party identification improves model fit (pseudo R² rises from 0.08 to 0.14). The strongest results appear when substituting approval of President Biden’s performance, where pseudo R² increases to 0.18. Gender also plays a consistent role: women have 1.7–1.9 times higher odds than men of perceiving price increases. In contrast, other demographic and contextual factors such as age, income, and rural–urban classification are not associated with inflation perceptions once politics and gender are accounted for.
+
+Table~\ref{tab:ologit-pol} through Table~\ref{tab:ologit-vote} present the results in the form of odds ratios, which provide an intuitive interpretation. An odds ratio (OR) compares the odds of being in a higher category of inflation perception for one group relative to a reference group, holding all other variables constant. An OR greater than 1 indicates a higher likelihood of perceiving inflation as higher; an OR less than 1 suggests a lower likelihood.
+
+In the party identification model (Table~\ref{tab:ologit-pol}), Republicans are nearly three times as likely as independents and others to perceive that prices have increased (OR = 2.91, p < 0.001). Democrats, by contrast, are significantly less likely to report higher inflation (OR = 0.42, p < 0.001). These results confirm partisan differences in economic perceptions documented in prior work.
+
+\begin{center}
+\textbf{TABLE 1 AROUND HERE}
+\end{center}
+
+Substituting approval of President Biden’s job performance yields the strongest political effects (Table~\ref{tab:ologit-job}). Relative to respondents who rate Biden’s performance as “excellent,” those with a “fair” evaluation are almost four times as likely to report higher prices (OR = 3.84, p < 0.001), while those rating him “poor” are more than sixteen times as likely (OR = 16.47, p < 0.001). This model more than doubles the fit relative to the party ID specification (pseudo R² = 0.18 versus 0.08).
+
+\begin{center}
+\textbf{TABLE 2 AROUND HERE}
+\end{center}
+
+The 2024 presidential vote model also reveals sharp divides (Table~\ref{tab:ologit-vote}). Trump supporters are more than three times as likely as supporters of other candidates to perceive higher inflation (OR = 3.23, p < 0.001), while Harris supporters are substantially less likely (OR = 0.32, p < 0.001). Model fit (pseudo R² = 0.14) improves relative to the partisan model but falls short of the Biden approval specification.
+
+\begin{center}
+\textbf{TABLE 3 AROUND HERE}
+\end{center}
+
+Gender differences remain robust across all three models. Women consistently report greater concern about rising prices than men, with odds ratios ranging from 1.69 to 1.88 (p < 0.001). This suggests that gendered roles in consumption or household budgeting may shape inflation perceptions independently of political alignment.
+
+Other variables are not statistically significant in any of the models. Rural respondents appear somewhat more likely than metropolitan residents to perceive price increases (OR $\approx 1.48$--$1.77$), but these estimates are not significant. Similarly, income categories and age have no consistent or meaningful effects once political and gender variables are included.
+
+Taken together, these results demonstrate that inflation perceptions are strongly politicized in Michigan. Political alignment, whether captured by party identification, retrospective approval of President Biden, or intended 2024 vote choice, emerges as the most powerful predictor, with Biden approval yielding the largest effect sizes and the best overall model fit. Gender plays a consistent secondary role, while age, income, and local context do not independently predict perceptions of inflation.
+
 
 \section{Discussion}
-These findings highlight the politicized and socially differentiated nature of inflation perceptions. Political alignment emerges as the strongest predictor, with presidential choice especially salient, suggesting that contemporary electoral dynamics shape how citizens interpret economic realities. Gender differences also matter, pointing to possible roles of consumption responsibilities, household budgeting, or broader narratives about economic insecurity. The lack of significant effects for local economic conditions underscores the limited influence of objective structural factors once politics and demographics are accounted for. Together, the results reinforce the idea that perceptions of inflation are not neutral reflections of economic experience but are filtered through identity and partisan lenses, with important implications for economic voting and political communication in swing states like Michigan.
+These findings highlight the politicized and socially differentiated nature of inflation perceptions. Political alignment emerges as the strongest predictor, with presidential choice especially salient, suggesting that contemporary electoral dynamics shape how citizens interpret economic realities. Gender differences also matter, pointing to possible roles of consumption responsibilities, household budgeting, or broader narratives about economic insecurity. The lack of significant effects for local economic conditions underscores the limited influence of objective structural factors once politics and demographics are accounted for. Together, the results reinforce the idea that perceptions of inflation are not neutral reflections of economic experience but are filtered through identity and partisan lenses, with important implications for economic voting and political communication in swing states such as Michigan.
+
+
+% no appendix header/lettering
+\clearpage
+\phantomsection
+\section*{Tables}
+\addcontentsline{toc}{section}{Tables} % optional: put in ToC
+\label{sec:tables}
+\input{Tables}
+
+% \clearpage
+% \phantomsection
+% \section*{Figures}
+% \addcontentsline{toc}{section}{Figures} % optional
+% \label{sec:figures}
+% \input{Figures}
 
 % \appendix
 % \clearpage
 
 % \section{Tables}
-% \input{1_Tables}
-% \label{appendix:A}
+% \input{Tables}
+% \label{table}
 
 % \clearpage
 % \section{Figures}
-% \input{1_Figures}
-% \label{appendix:B}
+% \input{Figures}
+% \label{figure}
 
 
 \newpage

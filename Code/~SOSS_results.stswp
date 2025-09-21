@@ -12,7 +12,11 @@ gl outputpath "/Users/YerimLee/Documents/GitHub/Inflation-Perceptions/Output"
 use "$inputpath/logit.dta", clear			// processed data
 set more off
 
-
+label variable Q5years_1 "Restaurant"
+label variable Q5years_2 "Grocery"
+label variable Q5years_3 "Housing"
+label variable Q5years_4 "Gas"
+label variable Q5years_5 "Overall"
 
 
 

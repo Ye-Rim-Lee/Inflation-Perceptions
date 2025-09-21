@@ -47,8 +47,8 @@ if _rc {
     di as error "esttab not found. Install with: ssc install estout"
 }
 esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace label ///
-    b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress ///
-    title("Determinants of Perceived Inflation (Overall, Ordered Logit)")
+    b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) wide ///
+    title(Determinants of Perceived Inflation - Overall Price)
 
 **# 3) FIGURE A: Homeownership across five domains
 tempfile home_pp

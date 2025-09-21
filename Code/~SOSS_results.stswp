@@ -49,7 +49,7 @@ if _rc {
 
 #delimit ;
 esttab m_Q5years_5 using "$outputpath/table_main_overall.tex",
-    replace label                /* use var/value labels */
+    replace booktabs wide    
     /* what to print in each cell */
     cells(b(fmt(3) star) se(fmt(3) par)) 
     starlevels(* 0.05 ** 0.01 *** 0.001)
@@ -61,7 +61,8 @@ esttab m_Q5years_5 using "$outputpath/table_main_overall.tex",
     collabels(none) notype level(95) interaction(" # ")
     /* pretty LaTeX wrapper */
     prehead("\begin{table}[H]\centering"
-            "\caption{Determinants of Perceived Inflation - Overall Price \label{tab1}}"
+            "\caption{Determinants of Perceived Inflation - Overall Price}"
+			"\label{tab1}"
             "\begin{tabular}{l*{@M}{c}}\toprule")
     posthead("\midrule")
     prefoot("\midrule")

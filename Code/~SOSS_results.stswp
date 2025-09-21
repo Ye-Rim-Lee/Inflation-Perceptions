@@ -13,6 +13,9 @@ use "$inputpath/logit.dta", clear			// processed data
 set more off
 
 
+
+
+
 local outcomes   Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5
 local flagship   Q5years_5          
 local age        age
@@ -51,7 +54,17 @@ if _rc {
 esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
 	b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) wide ///
 	label mtitles("Determinants of Perceived Inflation - Overall Price") ///
-	obslast
+	obslast ///
+	coeflabels(age "\textbf{Age}" ///
+			   c.age#c.age "Age\textsuperscript{2}" ///
+			   2.income4       "\$30K--\$59K" ///
+			   3.income4       "\$60K--\$99K" ///
+			   4.income4       "\$100K or more" ///
+			   cut1            "Cut 1" ///
+			   cut2            "Cut 2" ///
+			   cut3            "Cut 3" ///
+)
+
 
 
 

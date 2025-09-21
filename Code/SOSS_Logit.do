@@ -2,14 +2,15 @@
 	Title: Simple logit model evaluation of survey results
 	Date: 03/17/2025
 */
-**# - Settings
-set scheme s
+
 
 
 **# - Import Survey Data
 gl path1 "/Users/YerimLee/Documents/GitHub/Inflation-Perceptions/Data"
 cd "$path1"
-use "$path1/logit.dta"			// processed data
+use "$path1/logit.dta", clear			// processed data
+set more off
+
 
 **# 1. Data preprocessing
 
@@ -213,6 +214,148 @@ putexcel (A1) = etable
 
 
 **# JEPOP
+local outcomes   Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5
+local flagship   Q5years_5          
+local age        age
+local ruca       RUCA4
+local income     income4
+local educ       educ
+local party      polaff3
+local gender     gender
+local home       home
+
+* Nice labels for outcomes (for figures)
+local lab_Q5years_1 "Grocery"
+local lab_Q5years_2 "Gas"
+local lab_Q5years_3 "Home"
+local lab_Q5years_4 "Restaurant"
+local lab_Q5years_5 "Overall"
+
+
+**# ========= 1) Fit models 
+* Try one model first to confirm it runs
+ologit Q5years_5 c.age##c.age i.RUCA4 i.income4 i.educ ib3.polaff3 i.gender ib2.home, or baselevels vce(robust)
+estimates store m_Q5years_5
+
+* If the single model works, run all five:
+foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
+    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ ib3.polaff3 i.gender ib2.home, or baselevels vce(robust)
+    estimates store m_`y'
+}
+
+* Verify
+estimates dir
+
+**# ========= 2) Main Table (flagship)
+cap which esttab
+if _rc di as error "esttab not found. Install with: ssc install estout"
+
+esttab m_Q5years_5 using "table_main_overall.tex", replace label ///
+    eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress ///
+    title("Determinants of Perceived Inflation (Overall, Ordered Logit)")
+
+**# ========= 3) FIGURE A: Homeownership across five domains
+tempfile home_pp
+tempname PH
+postfile `PH' str20 outcome str40 home_lbl double p lci uci using `home_pp', replace
+
+foreach y of local outcomes {
+    estimates restore m_`y'
+    quietly margins `home', pr(outcome(5))
+    matrix M = r(table)
+    levelsof `home', local(hlist)
+    local j = 0
+    foreach h of local hlist {
+        local ++j
+        local hlab : label (`home') `h'
+        if `"`hlab'"' == "" local hlab "home=`h'"
+        post `PH' ("`y'") ("`hlab'") (M[1,`j']) (M[5,`j']) (M[6,`j'])
+    }
+}
+postclose `PH'
+use `home_pp', clear
+
+* Replace DV codes with nice labels for plotting
+foreach y of local outcomes {
+    local nice = `lab_`y''
+    replace outcome = "`nice'" if outcome=="`y'"
+}
+
+encode outcome, gen(outcome_id)
+encode home_lbl, gen(home_id)
+
+twoway ///
+ (rcap uci lci outcome_id if home_id==home_id[1]) ///
+ (rcap uci lci outcome_id if home_id==home_id[2]) ///
+ (connected p outcome_id if home_id==home_id[1], msymbol(circle)) ///
+ (connected p outcome_id if home_id==home_id[2], msymbol(triangle)), ///
+ legend(order(3 "`=home_lbl[1]'" 4 "`=home_lbl[2]'") pos(6) ring(0)) ///
+ ytitle("Adjusted probability, outcome=5") ///
+ xtitle("Price domain") xlabel(, valuelabel angle(0)) ///
+ title("Homeownership and perceived inflation across domains")
+graph export "fig_homeowner_across_domains.png", width(2000) replace	
+	
+**# ========= 4) FIGURE B: Party differences across five domains
+preserve
+tempfile party_pp
+tempname PP
+postfile `PP' str20 outcome str40 party_lbl double p lci uci using `party_pp', replace
+
+levelsof `party', local(plist)
+foreach y of local outcomes {
+    estimates restore m_`y'
+    quietly margins `party', pr(outcome(5))
+    matrix M = r(table)
+    local j = 0
+    foreach lvl of local plist {
+        local ++j
+        local plab : label (`party') `lvl'
+        if `"`plab'"'=="" local plab "party=`lvl'"
+        post `PP' ("`y'") ("`plab'") (M[1,`j']) (M[5,`j']) (M[6,`j'])
+    }
+}
+postclose `PP'
+use `party_pp', clear
+
+* Replace DV codes with nice labels for plotting
+foreach y of local outcomes {
+    local nice = `lab_`y''
+    replace outcome = "`nice'" if outcome=="`y'"
+}
+
+encode outcome, gen(outcome_id)
+encode party_lbl, gen(party_id)
+
+graph bar (mean) p, over(party_id, label(angle(30))) over(outcome_id) ///
+    blabel(bar, format(%4.2f)) ///
+    ytitle("Adjusted probability, outcome=5") ///
+    title("Partisanship and perceived inflation across domains") legend(off)
+graph export "fig_party_across_domains.png", width(2000) replace
+restore
+
+**# ========= APPENDIX TABLE: all five outcomes side-by-side (ORs)
+esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "appendix_all5.tex", replace ///
+    eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress label ///
+    title("Determinants of Perceived Inflation across Five Domains (Ordered Logit)") ///
+    mtitles("Grocery" "Gas" "Home" "Restaurant" "Overall")
+	
+	
+**# ========= key covariates only (cleaner appendix)
+esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "appendix_keycovars.tex", replace ///
+    eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress label ///
+    title("Key Covariates across Five Domains") mtitles("Grocery" "Gas" "Home" "Restaurant" "Overall") ///
+    keep( ///
+        c.`age' c.`age'#c.`age' ///
+        i.`ruca' ///
+        i.`income' ///
+        i.`educ' ///
+        ib3.`party' ///
+        i.`gender' ///
+        ib2.`home' ///
+    )
+
+**# Temp
+
 tab PO1 
 
 putexcel set Q5_approval_odd, replace
@@ -231,7 +374,27 @@ putexcel set Q5_vote, replace
 ologit Q5years_5 age i.RUCA4 i.income4 i.ippsr120p i.gender, baselevels 
 putexcel (A1) = etable
 
+// house owner
+tab home
+tab homeyear
 
+ologit Q5years_5 age i.RUCA4 i.income4 ib3.polaff3 i.gender, or baselevels 
+ologit Q5years_5 age i.RUCA4 i.income4 ib3.polaff3 i.gender i.home, or baselevels 
+
+ologit Q5years_1 age i.RUCA4 i.income4 ib3.polaff3 i.gender ib2.home, or baselevels 
+ologit Q5years_2 age i.RUCA4 i.income4 ib3.polaff3 i.gender ib2.home, or baselevels 
+ologit Q5years_3 age i.RUCA4 i.income4 ib3.polaff3 i.gender ib2.home, or baselevels 
+ologit Q5years_4 age i.RUCA4 i.income4 ib3.polaff3 i.gender ib2.home, or baselevels 
+ologit Q5years_5 age i.RUCA4 i.income4 ib3.polaff3 i.gender ib2.home, or baselevels 
+
+
+ologit Q5years_3 age i.RUCA4 i.income4 ib3.polaff3 i.gender ib2.home, or baselevels 
+margins RUCA4, dydx(home) predict(outcome(4))
+marginsplot
+
+ologit Q5years_3 age i.RUCA4 i.income4 ib3.polaff3 i.gender ib2.home, or baselevels 
+margins polaff3, dydx(home) predict(outcome(4))
+marginsplot
 	
 	
 **# 999. Format Results

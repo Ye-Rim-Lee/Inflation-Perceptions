@@ -106,12 +106,12 @@ tab income Q5years_5
 
 	* Create income groups (4)
 	recode income (1/3=1) (4/6=2) (7/10=3) (11/12=4), gen(income4)
-	label define income4_labels 1 "Below $30K" ///
-								2 "$30K-$59K"  ///
-								3 "$60K-$99K"  ///
-								4 "$100K or more"
-	label values income4 income4_labels
-	tab income income4
+	label define income_labels 1 "Below \\$30K" ///
+								2 "\\$30K--\\$59K"  ///
+								3 "\\$60K--\\$99K"  ///
+								4 "\\$100K or more", replace
+	label values income4 income_labels
+	tab income4
 	
 * Other variables
 * Education

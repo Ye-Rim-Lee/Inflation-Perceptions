@@ -56,10 +56,9 @@ if _rc {
 
 
 esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
-	b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) ///
-	label ///
+	b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) booktabs label ///
 	title("Determinants of Perceived Inflation - Overall Prices") ///
-	obslast ///
+	obslast eqlabels(none) ///
 	coeflabels(age "\textbf{Age}" ///
 			   c.age#c.age	"Age\textsuperscript{2}" ///
 			   cut1			"Cut 1" ///
@@ -68,7 +67,7 @@ esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
 	)
 
 esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "appendix_all5.tex", replace ///
-    eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) compress label ///
+    b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label ///
     title("Determinants of Perceived Inflation across Five Domains") ///
     mtitles("Grocery" "Gas" "Home" "Restaurant" "Overall") ///
 	coeflabels(age "\textbf{Age}" ///

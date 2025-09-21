@@ -12,7 +12,11 @@ gl outputpath "/Users/YerimLee/Documents/GitHub/Inflation-Perceptions/Output"
 use "$inputpath/logit.dta", clear			// processed data
 set more off
 
-
+label variable Q5years_1 "Restaurant"
+label variable Q5years_2 "Grocery"
+label variable Q5years_3 "Housing"
+label variable Q5years_4 "Gas"
+label variable Q5years_5 "Overall"
 
 
 
@@ -52,17 +56,25 @@ if _rc {
 
 
 esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
-	b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) wide ///
-	label mtitles("Determinants of Perceived Inflation - Overall Price") ///
-	obslast ///
+	b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label nogaps wide ///
+	title("Determinants of Perceived Inflation - Overall Prices") ///
+	obslast eqlabels(none) ///
 	coeflabels(age "\textbf{Age}" ///
 			   c.age#c.age	"Age\textsuperscript{2}" ///
 			   cut1			"Cut 1" ///
 			   cut2			"Cut 2" ///
 			   cut3			"Cut 3" ///
-)
+	)
 
-
+esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "appendix_all5.tex", replace ///
+    b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label nogaps ///
+    title("Determinants of Perceived Inflation across all categories") ///
+	coeflabels(age "\textbf{Age}" ///
+			   c.age#c.age	"Age\textsuperscript{2}" ///
+			   cut1			"Cut 1" ///
+			   cut2			"Cut 2" ///
+			   cut3			"Cut 3" ///
+	)
 
 
 

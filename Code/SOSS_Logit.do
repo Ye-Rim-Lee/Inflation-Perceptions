@@ -59,9 +59,9 @@ codebook polaff 				// check numeric tab
 	replace polaff3 = 2 if polaff == 1
 	replace polaff3 = 3 if polaff == 7
 	
-	label define polaff3_labels 1 "Independent & Others" ///
+	label define polaff3_labels 1 "Independent \& Others" ///
 								2 "Republican"			 ///
-								3 "Democrat"
+								3 "Democrat", replace
 	label values polaff3 polaff3_labels
 	tab polaff3
 

@@ -1,0 +1,122 @@
+\begin{table}[H]
+\centering
+\caption{Ordered Logit Results Using Political Affiliation}
+\label{tab:ologit-pol}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Variables} & \textbf{Coefficient} & \textbf{Std. err.} & \textbf{Odds ratio} & \textbf{Std. err.} \\ \midrule
+\textbf{Age}                          & 0.006       & 0.004     & 1.006      & 0.004     \\
+\textbf{Rural-Urban}                  &             &           &            &           \\
+Metropolitan (base)          &             &           &            &           \\
+Micropolitan                 & -0.158      & 0.281     & 0.854      & 0.240     \\
+Small Town                   & -0.076      & 0.376     & 0.927      & 0.349     \\
+Rural                        & 0.571       & 0.394     & 1.771      & 0.698     \\
+\textbf{Household Income}             &             &           &            &           \\
+Below \$30K (base)           &             &           &            &           \\
+\$30K-\$59K                  & 0.154       & 0.209     & 1.167      & 0.244     \\
+\$60K-\$99K                  & 0.005       & 0.218     & 1.005      & 0.219     \\
+\$100K or more               & -0.095      & 0.215     & 0.909      & 0.195     \\
+\textbf{Political Affiliation}        &             &           &            &           \\
+Independent \& Others (base) &             &           &            &           \\
+Republican***                & 1.067       & 0.227     & 2.905      & 0.658     \\
+Democrat***                  & -0.864      & 0.162     & 0.421      & 0.068     \\
+\textbf{Gender}                       &             &           &            &           \\
+Male (base)                  &             &           &            &           \\
+Female***                    & 0.523       & 0.149     & 1.686      & 0.252     \\
+Cut 1                        & -4.872      & -3.271    & -4.071     & 0.408     \\
+Cut 2                        & -3.655      & -2.334    & -2.995     & 0.337     \\
+Cut 3                        & -0.947      & 0.218     & -0.364     & 0.297     \\
+\midrule
+Observations                 &             &           &            & 976       \\
+Log likelihood               &             &           &            & -662.261  \\
+LR chi2(10)                  &             &           &            & 120.780   \\
+Prob \textgreater chi2       &             &           &            & 0.000     \\
+Pseudo R2                    &             &           &            & 0.084     \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% -----------------------
+
+\begin{table}[H]
+\centering
+\caption{Ordered Logit Results Using Political Affiliation}
+\label{tab:ologit-job}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Variables} & \textbf{Coefficient} & \textbf{Std. err.} & \textbf{Odds ratio} & \textbf{Std. err.} \\ \midrule
+\textbf{Age*}             & 0.009  & 0.005 & 1.009  & 0.005 \\
+\textbf{Rural-Urban}      &        &       &        &       \\
+Metropolitan (base)       &        &       &        &       \\
+Micropolitan              & -0.282 & 0.305 & 0.754  & 0.230 \\
+Small Town                & -0.190 & 0.397 & 0.827  & 0.329 \\
+Rural                     & 0.394  & 0.415 & 1.483  & 0.615 \\
+\textbf{Household Income} &        &       &        &       \\
+Below \$30K (base)        &        &       &        &       \\
+\$30K-\$59K                 & 0.248  & 0.222 & 1.281  & 0.285 \\
+\$60K-\$99K                 & 0.066  & 0.233 & 1.068  & 0.249 \\
+\$100K or more            & 0.101  & 0.231 & 1.106  & 0.255 \\
+\textbf{Job Approval}     &        &       &        &       \\
+Excellent (base)          &        &       &        &       \\
+Good                      & 0.191  & 0.227 & 1.211  & 0.275 \\
+Fair***                   & 1.346  & 0.260 & 3.842  & 1.000 \\
+Poor***                   & 2.802  & 0.256 & 16.474 & 4.215 \\
+\textbf{Gender}           &        &       &        &       \\
+Male (base)               &        &       &        &       \\
+Female***                 & 0.545  & 0.160 & 1.725  & 0.275 \\
+Cut1                     & -2.661 & 0.451 & -2.661 & 0.451 \\
+Cut2                     & -1.576 & 0.389 & -1.576 & 0.389 \\
+Cut3                     & 1.267  & 0.371 & 1.267  & 0.371 \\ 
+\midrule
+Observations              &        &       &        & 976.000  \\
+Log likelihood            &        &       &        & -594.418 \\
+LR chi2(11)               &        &       &        & 256.470  \\
+Prob \textgreater chi2    &        &       &        & 0.000    \\
+Pseudo R2                 &        &       &        & 0.177    \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% ------------
+\begin{table}[H]
+\centering
+\caption{Ordered Logit Results Using 2024 Presidential Voting}
+\label{tab:ologit-vote}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Variables} & \textbf{Coefficient} & \textbf{Std. err.} & \textbf{Odds ratio} & \textbf{Std. err.} \\ \midrule
+\textbf{Age}              & 0.004  & 0.005 & 1.004  & 0.005    \\
+                          &        &       &        &          \\
+\textbf{Rural-Urban}      &        &       &        &          \\
+Metropolitan (base)       &        &       &        &          \\
+Micropolitan              & -0.358 & 0.297 & 0.699  & 0.207    \\
+Small Town                & -0.255 & 0.396 & 0.775  & 0.307    \\
+Rural                     & 0.393  & 0.409 & 1.482  & 0.607    \\
+                          &        &       &        &          \\
+\textbf{Household Income} &        &       &        &          \\
+Below \$30K (base)        &        &       &        &          \\
+\$30K-\$59K                 & 0.280  & 0.217 & 1.323  & 0.288    \\
+\$60K-\$99K                 & 0.011  & 0.228 & 1.011  & 0.230    \\
+\$100K or more            & -0.006 & 0.224 & 0.994  & 0.223    \\
+                          &        &       &        &          \\
+\textbf{2024 Vote}        &        &       &        &          \\
+Other (base)              &        &       &        &          \\
+Kamala Harris***          & -1.142 & 0.374 & 0.319  & 0.119    \\
+Donald Trump***           & 1.173  & 0.406 & 3.232  & 1.312    \\
+                          &        &       &        &          \\
+\textbf{Gender}           &        &       &        &          \\
+Male (base)               &        &       &        &          \\
+Female***                 & 0.632  & 0.156 & 1.882  & 0.294    \\
+Cut1                     & -4.430 & 0.528 & -4.430 & 0.528    \\
+Cut2                     & -3.353 & 0.475 & -3.353 & 0.475    \\
+Cut3                     & -0.616 & 0.446 & -0.616 & 0.446    \\
+Observations              &        &       &        & 976.000  \\ 
+\midrule
+Log likelihood            &        &       &        & -618.097 \\
+LR chi2(10)               &        &       &        & 209.110  \\
+Prob \textgreater chi2    &        &       &        & 0.000    \\
+Pseudo R2                 &        &       &        & 0.145    \\
+\bottomrule
+\end{tabular}
+\end{table}

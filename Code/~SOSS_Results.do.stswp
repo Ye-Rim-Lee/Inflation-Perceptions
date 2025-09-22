@@ -40,7 +40,17 @@ local lab_Q5years_5 "Overall"
 
 foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
     quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ ib3.polaff3 i.gender ib2.home, or baselevels vce(robust)
-    estimates store m_`y'
+    estimates store pol_`y'
+}
+
+foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
+    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ i.PO1 i.gender ib2.home, or baselevels vce(robust)
+    estimates store job_`y'
+}
+
+foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
+    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ ib2.ippsr120p i.gender ib2.home, or baselevels vce(robust)
+    estimates store vot_`y'
 }
 
 * Verify
@@ -52,7 +62,7 @@ if _rc {
     di as error "esttab not found. Install with: ssc install estout"
 }
 
-esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
+esttab pol_Q5years_5 job_Q5years_5 vot_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
 	b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label nogaps wide ///
 	title("Determinants of Perceived Inflation - Overall Prices") ///
 	eqlabels(none) ///

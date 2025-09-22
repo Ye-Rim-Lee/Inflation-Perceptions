@@ -18,8 +18,6 @@ label variable Q5years_3 "Housing"
 label variable Q5years_4 "Gas"
 label variable Q5years_5 "Overall"
 
-
-
 local outcomes   Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5
 local flagship   Q5years_5          
 local age        age
@@ -39,10 +37,22 @@ local lab_Q5years_5 "Overall"
 
 
 **# 1) Fit models 
+ologit Q5years_5 c.age##c.age i.RUCA4 i.income4 i.educ i.gender ib2.home ib3.polaff3, or baselevels vce(robust)
+
 
 foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
-    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ ib3.polaff3 i.gender ib2.home, or baselevels vce(robust)
-    estimates store m_`y'
+    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ i.gender ib2.home ib3.polaff3, or baselevels vce(robust)
+    estimates store pol_`y'
+}
+
+foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
+    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ i.gender ib2.home i.PO1, or baselevels vce(robust)
+    estimates store job_`y'
+}
+
+foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
+    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ i.gender ib2.home ib1.ippsr120p, or baselevels vce(robust)
+    estimates store vot_`y'
 }
 
 * Verify
@@ -54,28 +64,98 @@ if _rc {
     di as error "esttab not found. Install with: ssc install estout"
 }
 
-
-esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
-	b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label nogaps wide ///
-	title("Determinants of Perceived Inflation - Overall Prices") ///
-	obslast eqlabels(none) ///
-	coeflabels(age "\textbf{Age}" ///
-			   c.age#c.age	"Age\textsuperscript{2}" ///
-			   cut1			"Cut 1" ///
-			   cut2			"Cut 2" ///
-			   cut3			"Cut 3" ///
+esttab pol_Q5years_5 job_Q5years_5 vot_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
+	eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label nogaps wide ///
+	title("Comparing Political Predictors of Perceived Overall Inflation") ///
+	eqlabels(none) ///
+    stats(N ll chi2 p r2_p, ///
+          labels("Observations" "Log likelihood" "Wald chi2" "Prob > chi2" "Pseudo R^2") ///
+          fmt(0 3 2 3 3)) ///
+	coeflabels( ///
+			age "\textbf{Age}" ///
+			c.age#c.age	"\textbf{Age\textsuperscript{2}}" ///
+			1.RUCA4		"\textbf{Rural-Urban} (Metropolitan)" ///
+			1.income4	"\textbf{Household Income} (Below \\$30K)" ///
+			1.educ 		"\textbf{Education} (Less than HS)" ///
+			3.polaff3	"\textbf{Political Affiliation} (Democrat)" ///
+			1.gender	"\textbf{Gender} (Male)" ///
+			2.home 		"\textbf{Home Ownership} (No)" ///
+			1.PO1		"\textbf{Job Approval} (Excellent)" ///
+			1.ippsr120p "\textbf{2024 Vote} (Kamala Harris)" ///
+			cut1		"Cut 1" ///
+			cut2		"Cut 2" ///
+			cut3		"Cut 3" ///
 	)
 
-esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "appendix_all5.tex", replace ///
-    b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label nogaps ///
-    title("Determinants of Perceived Inflation across all categories") ///
-	coeflabels(age "\textbf{Age}" ///
-			   c.age#c.age	"Age\textsuperscript{2}" ///
-			   cut1			"Cut 1" ///
-			   cut2			"Cut 2" ///
-			   cut3			"Cut 3" ///
+esttab pol_Q5years_1 pol_Q5years_2 pol_Q5years_3 pol_Q5years_4 pol_Q5years_5 using "$outputpath/table_pol_all.tex", replace ///
+    eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label nogaps ///
+    title("Political Affiliation and Inflation Perceptions by Category") ///
+	eqlabels(none) ///
+	stats(N ll chi2 p r2_p, ///
+          labels("Observations" "Log likelihood" "Wald chi2" "Prob > chi2" "Pseudo R^2") ///
+          fmt(0 3 2 3 3)) ///
+	coeflabels( ///
+			age "\textbf{Age}" ///
+			c.age#c.age	"\textbf{Age\textsuperscript{2}}" ///
+			1.RUCA4		"\textbf{Rural-Urban} (Metropolitan)" ///
+			1.income4	"\textbf{Household Income} (Below \\$30K)" ///
+			1.educ 		"\textbf{Education} (Less than HS)" ///
+			3.polaff3	"\textbf{Political Affiliation} (Democrat)" ///
+			1.gender	"\textbf{Gender} (Male)" ///
+			2.home 		"\textbf{Home Ownership} (No)" ///
+			1.PO1		"\textbf{Job Approval} (Excellent)" ///
+			1.ippsr120p "\textbf{2024 Vote} (Kamala Harris)" ///
+			cut1		"Cut 1" ///
+			cut2		"Cut 2" ///
+			cut3		"Cut 3" ///
 	)
 
+	
+esttab job_Q5years_1 job_Q5years_2 job_Q5years_3 job_Q5years_4 job_Q5years_5 using "$outputpath/table_job_all.tex", replace ///
+    eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label nogaps ///
+    title("Biden Administration Approval and Inflation Perceptions by Category") ///
+	eqlabels(none) ///
+	stats(N ll chi2 p r2_p, ///
+          labels("Observations" "Log likelihood" "Wald chi2" "Prob > chi2" "Pseudo R^2") ///
+          fmt(0 3 2 3 3)) ///
+	coeflabels( ///
+			age "\textbf{Age}" ///
+			c.age#c.age	"\textbf{Age\textsuperscript{2}}" ///
+			1.RUCA4		"\textbf{Rural-Urban} (Metropolitan)" ///
+			1.income4	"\textbf{Household Income} (Below \\$30K)" ///
+			1.educ 		"\textbf{Education} (Less than HS)" ///
+			3.polaff3	"\textbf{Political Affiliation} (Democrat)" ///
+			1.gender	"\textbf{Gender} (Male)" ///
+			2.home 		"\textbf{Home Ownership} (No)" ///
+			1.PO1		"\textbf{Job Approval} (Excellent)" ///
+			1.ippsr120p "\textbf{2024 Vote} (Kamala Harris)" ///
+			cut1		"Cut 1" ///
+			cut2		"Cut 2" ///
+			cut3		"Cut 3" ///
+	)
+	
+esttab vot_Q5years_1 vot_Q5years_2 vot_Q5years_3 vot_Q5years_4 vot_Q5years_5 using "$outputpath/table_vot_all.tex", replace ///
+    eform b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label nogaps ///
+    title("2024 Presidential Vote Intention and Inflation Perceptions by Category") ///
+	eqlabels(none) ///
+	stats(N ll chi2 p r2_p, ///
+          labels("Observations" "Log likelihood" "Wald chi2" "Prob > chi2" "Pseudo R^2") ///
+          fmt(0 3 2 3 3)) ///
+	coeflabels( ///
+			age "\textbf{Age}" ///
+			c.age#c.age	"\textbf{Age\textsuperscript{2}}" ///
+			1.RUCA4		"\textbf{Rural-Urban} (Metropolitan)" ///
+			1.income4	"\textbf{Household Income} (Below \\$30K)" ///
+			1.educ 		"\textbf{Education} (Less than HS)" ///
+			3.polaff3	"\textbf{Political Affiliation} (Democrat)" ///
+			1.gender	"\textbf{Gender} (Male)" ///
+			2.home 		"\textbf{Home Ownership} (No)" ///
+			1.PO1		"\textbf{Job Approval} (Excellent)" ///
+			1.ippsr120p "\textbf{2024 Vote} (Kamala Harris)" ///
+			cut1		"Cut 1" ///
+			cut2		"Cut 2" ///
+			cut3		"Cut 3" ///
+	)
 
 
 #delimit ;

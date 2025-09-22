@@ -1,6 +1,8 @@
-\begin{table}[htbp]\centering
+\begin{table}[htbp]\centering \scriptsize
+
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
 \caption{Comparing Political Predictors of Perceived Overall Inflation}
+\label{tab:main}
 \begin{tabular}{l*{3}{cc}}
 \hline\hline
                     &\multicolumn{2}{c}{(1)}           &\multicolumn{2}{c}{(2)}           &\multicolumn{2}{c}{(3)}           \\
@@ -8,31 +10,34 @@
 \hline
 \textbf{Age}        &       1.051\sym{*}  &     (0.027)&       1.060\sym{**} &     (0.030)&       1.050\sym{*}  &     (0.029)\\
 \textbf{Age\textsuperscript{2}}&       1.000\sym{*}  &     (0.000)&       1.000\sym{*}  &     (0.000)&       1.000         &     (0.000)\\
-\textbf{Rural-Urban} (Metropolitan)&       1.000         &         (.)&       1.000         &         (.)&       1.000         &         (.)\\
+\textbf{Rural-Urban} (Metropolitan) & & &  &  &     &  \\
 Micropolitan        &       0.849         &     (0.230)&       0.749         &     (0.219)&       0.694         &     (0.200)\\
 Small Town          &       0.961         &     (0.362)&       0.849         &     (0.331)&       0.832         &     (0.317)\\
 Rural               &       1.873\sym{*}  &     (0.694)&       1.595         &     (0.609)&       1.569         &     (0.550)\\
-\textbf{Household Income} (Below \$30K)&       1.000         &         (.)&       1.000         &         (.)&       1.000         &         (.)\\
+\textbf{Household Income} (Below \$30K) & & &  &  &     &  \\
 \$30K--\$59K        &       1.348         &     (0.301)&       1.488\sym{*}  &     (0.331)&       1.536\sym{*}  &     (0.340)\\
 \$60K--\$99K        &       1.236         &     (0.295)&       1.274         &     (0.311)&       1.233         &     (0.299)\\
 \$100K or more      &       1.328         &     (0.349)&       1.447         &     (0.394)&       1.405         &     (0.378)\\
-\textbf{Education} (Less than HS)&       1.000         &         (.)&       1.000         &         (.)&       1.000         &         (.)\\
+\textbf{Education} (Less than HS) & & &  &  &     &  \\
 High School Graduate/GED&       1.105         &     (0.548)&       0.957         &     (0.518)&       1.149         &     (0.598)\\
 Some College/Technical&       0.919         &     (0.456)&       0.840         &     (0.450)&       0.942         &     (0.489)\\
 College Graduate or Higher&       0.632         &     (0.312)&       0.757         &     (0.404)&       0.760         &     (0.392)\\
-\textbf{Gender} (Male)&       1.000         &         (.)&       1.000         &         (.)&       1.000         &         (.)\\
+\textbf{Gender} (Male) & & &  &  &     &  \\
 Female              &       1.707\sym{***}&     (0.259)&       1.722\sym{***}&     (0.274)&       1.901\sym{***}&     (0.300)\\
+\textbf{Home Ownership} (No) & & &  &  &     &  \\
 Yes                 &       0.786         &     (0.146)&       0.725\sym{*}  &     (0.139)&       0.715\sym{*}  &     (0.135)\\
-\textbf{Home Ownership} (No)&       1.000         &         (.)&       1.000         &         (.)&       1.000         &         (.)\\
+
+\textbf{Political Affiliation} (Democrat)& & &  &  &     &  \\
 Independent \& Others&       2.401\sym{***}&     (0.387)&                     &            &                     &            \\
 Republican          &       7.025\sym{***}&     (1.673)&                     &            &                     &            \\
-\textbf{Political Affiliation} (Democrat)&       1.000         &         (.)&                     &            &                     &            \\
-\textbf{Job Approval} (Excellent)&                     &            &       1.000         &         (.)&                     &            \\
+
+\textbf{Job Approval} (Excellent) & & &  &  &     &  \\
 Good                &                     &            &       1.257         &     (0.280)&                     &            \\
 Fair                &                     &            &       4.025\sym{***}&     (1.043)&                     &            \\
 Poor                &                     &            &      16.980\sym{***}&     (4.474)&                     &            \\
-Other:              &                     &            &                     &            &       2.957\sym{***}&     (1.113)\\
-\textbf{2024 Vote} (Kamala Harris)&                     &            &                     &            &       1.000         &         (.)\\
+\textbf{2024 Vote} (Kamala Harris) & & &  &  &     &  \\
+Other              &                     &            &                     &            &       2.957\sym{***}&     (1.113)\\
+
 Donald Trump (Republican)&                     &            &                     &            &      10.220\sym{***}&     (2.231)\\
 Cut 1               &       0.092\sym{***}&     (0.075)&       0.180\sym{*}  &     (0.163)&       0.093\sym{***}&     (0.080)\\
 Cut 2               &       0.270         &     (0.217)&       0.532         &     (0.479)&       0.272         &     (0.231)\\
@@ -44,7 +49,10 @@ Wald chi2           &      121.64         &            &      198.52         &  
 Prob > chi2         &       0.000         &            &       0.000         &            &       0.000         &            \\
 Pseudo R^2          &       0.093         &            &       0.182         &            &       0.152         &            \\
 \hline\hline
-\multicolumn{7}{l}{\footnotesize Exponentiated coefficients; Standard errors in parentheses}\\
 \multicolumn{7}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{7}{p{0.9\linewidth}}{\footnotesize 
+For each categorical variable in bold, the reference group is indicated in parentheses. 
+Reported coefficients are odds ratios with robust standard errors in parentheses.} \\
+
 \end{tabular}
 \end{table}

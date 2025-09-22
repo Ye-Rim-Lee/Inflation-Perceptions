@@ -39,17 +39,17 @@ local lab_Q5years_5 "Overall"
 **# 1) Fit models 
 
 foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
-    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ ib3.polaff3 i.gender ib2.home, or baselevels vce(robust)
+    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ i.gender ib2.home ib3.polaff3, or baselevels vce(robust)
     estimates store pol_`y'
 }
 
 foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
-    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ i.PO1 i.gender ib2.home, or baselevels vce(robust)
+    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ i.gender ib2.home i.PO1, or baselevels vce(robust)
     estimates store job_`y'
 }
 
 foreach y in Q5years_1 Q5years_2 Q5years_3 Q5years_4 Q5years_5 {
-    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ ib2.ippsr120p i.gender ib2.home, or baselevels vce(robust)
+    quietly ologit `y' c.age##c.age i.RUCA4 i.income4 i.educ i.gender ib2.home ib2.ippsr120p, or baselevels vce(robust)
     estimates store vot_`y'
 }
 
@@ -78,6 +78,8 @@ esttab pol_Q5years_5 job_Q5years_5 vot_Q5years_5 using "$outputpath/table_main_o
 			3.polaff3	"\textbf{Political Affiliation} (Democrat)" ///
 			1.gender	"\textbf{Gender} (Male)" ///
 			2.home 		"\textbf{Home Ownership} (No)" ///
+			1.PO1		"\textbf{Job Approval} (Excellent)" ///
+			2.ippsr120p "\textbf{2024 Vote} (Kamala Harris)" ///
 			cut1		"Cut 1" ///
 			cut2		"Cut 2" ///
 			cut3		"Cut 3" ///

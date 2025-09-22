@@ -52,16 +52,25 @@ if _rc {
     di as error "esttab not found. Install with: ssc install estout"
 }
 
-
 esttab m_Q5years_5 using "$outputpath/table_main_overall.tex", replace ///
 	b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) label nogaps wide ///
 	title("Determinants of Perceived Inflation - Overall Prices") ///
-	obslast eqlabels(none) ///
-	coeflabels(age "\textbf{Age}" ///
-			   c.age#c.age	"Age\textsuperscript{2}" ///
-			   cut1			"Cut 1" ///
-			   cut2			"Cut 2" ///
-			   cut3			"Cut 3" ///
+	eqlabels(none) ///
+    stats(N ll chi2 p r2_p, ///
+          labels("Observations" "Log likelihood" "Wald chi2" "Prob > chi2" "Pseudo R^2") ///
+          fmt(0 3 2 3 3)) ///
+	coeflabels( ///
+			age "\textbf{Age}" ///
+			c.age#c.age	"\textbf{Age\textsuperscript{2}}" ///
+			1.RUCA4		"\textbf{Rural-Urban} (Metropolitan)" ///
+			1.income4	"\textbf{Household Income} (Below \$30K)" ///
+			1.educ 		"\textbf{Education} (Less than HS)" ///
+			3.polaff3	"\textbf{Political Affiliation} (Democrat)" ///
+			1.gender	"\textbf{Gender} (Male)" ///
+			2.home 		"\textbf{Home Ownership} (No)" ///
+			cut1		"Cut 1" ///
+			cut2		"Cut 2" ///
+			cut3		"Cut 3" ///
 	)
 
 esttab m_Q5years_1 m_Q5years_2 m_Q5years_3 m_Q5years_4 m_Q5years_5 using "appendix_all5.tex", replace ///

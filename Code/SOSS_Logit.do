@@ -409,10 +409,12 @@ outreg2 using results.doc, replace word ///
          label
 		 
 		 
+/*
 		 - beta correlation
 		 - which one is the strongest ANOVA check
 		 - special issue Jon Eguia or
 		 - public perceptions journal, elections public opinion (2.59) journal
 		 - applied economics perspective and policy (ag econ journal) 
 		 - Impact Factors compare , abstract, keywords
+*/
 		 

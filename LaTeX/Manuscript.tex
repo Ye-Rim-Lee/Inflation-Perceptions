@@ -1,8 +1,26 @@
-\documentclass{article}
+\documentclass[]{interact}
 
-\biboptions{authoryear,round,semicolon}
-% \citet{smith2020}  % Smith (2020)
-% \citep{smith2020}  % (Smith, 2020)
+\usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
+\usepackage{subfigure}% Support for small, `sub' figures and tables
+%\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
+
+\usepackage{natbib}% Citation support using natbib.sty
+\bibpunct[, ]{(}{)}{;}{a}{}{,}% Citation support using natbib.sty
+\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
+
+\theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{notation}{Notation}
 
 
 
@@ -39,7 +57,7 @@
 \usepackage{graphicx} 
 
 
-\journal{Journal XYZ}
+
 
 \hypersetup{
     colorlinks=true,
@@ -48,6 +66,25 @@
 
 
 \begin{document}
+
+\articletype{ARTICLE TEMPLATE}
+
+\title{Taylor \& Francis \LaTeX\ template for authors (\textsf{Interact} layout + Chicago author-date reference style)}
+
+\author{
+\name{A.~N. Author\textsuperscript{a}\thanks{CONTACT A.~N. Author. Email: latex.helpdesk@tandf.co.uk} and John Smith\textsuperscript{b}}
+\affil{\textsuperscript{a}Taylor \& Francis, 4 Park Square, Milton Park, Abingdon, UK; \textsuperscript{b}Institut f\"{u}r Informatik, Albert-Ludwigs-Universit\"{a}t, Freiburg, Germany}
+}
+
+\maketitle
+
+\begin{abstract}
+This template is for authors who are preparing a manuscript for a Taylor \& Francis journal using the \LaTeX\ document preparation system and the \texttt{interact} class file, which is available via selected journals' home pages on the Taylor \& Francis website.
+\end{abstract}
+
+\begin{keywords}
+Sections; lists; figures; tables; mathematics; fonts; references; appendices
+\end{keywords}
 
 % Define a custom highlight box
 \tcbset{highlight/.style={colback=yellow!25!white, colframe=yellow!75!black, 

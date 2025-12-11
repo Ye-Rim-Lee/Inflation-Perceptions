@@ -4,7 +4,8 @@
 \usepackage{subfigure}% Support for small, `sub' figures and tables
 %\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
 
-\usepackage{natbib}% Citation support using natbib.sty
+\usepackage[round,authoryear]{natbib}
+
 \bibpunct[, ]{(}{)}{;}{a}{}{,}% Citation support using natbib.sty
 \renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
 
@@ -72,8 +73,13 @@
 \title{Partisanship and Inflation Perceptions: Evidence from Michigan, 2019–2024}
 
 \author{
-\name{A.~N. Author\textsuperscript{a}\thanks{CONTACT A.~N. Author. Email: leeye12@msu.edu} and John Smith\textsuperscript{b}}
-\affil{\textsuperscript{a}Michigan State University; \textsuperscript{b}NaN}
+\name{
+Ye-Rim Lee\textsuperscript{a}\thanks{CONTACT Ye-Rim Lee. Email: leeye12@msu.edu}, 
+Erika Rosebrook\textsuperscript{a}, 
+Scott Loveridge\textsuperscript{a}, 
+Dusan Paredes\textsuperscript{b}, 
+and Mark Skidmore\textsuperscript{a}}
+\affil{\textsuperscript{a}Department of Agricultural, Food, and Resource Economics, Michigan State University, East Lansing, MI, USA; \textsuperscript{b}Universidad Católica del Norte, Antofagasta, Chile}
 }
 
 \maketitle
@@ -94,21 +100,25 @@ Inflation perceptions; partisanship; leader approval; voting intention
 
 
 
-\section{Introduction}
+\section*{Introduction}
 
 Inflation perceptions have become increasingly politicized in recent years, especially in battleground states such as Michigan. While official statistics document price dynamics, what matters for political behavior is how individuals perceive these changes. Prior research shows that partisan identity often colors economic perceptions, yet less is known about how local economic context and demographics intersect with these political divides. We address this gap with a survey of 1,000 Michigan residents conducted in 2024, asking respondents how they perceived price changes over the past five years. We analyze the drivers of these perceptions, with attention to partisanship, presidential vote choice, gender, and county-level economic conditions.
 
-\subsection{\textit{Inflation as a political issue}}
+\section*{Theory and Expectations}
+
+\subsection*{\textit{Inflation as a political issue}}
 
 Inflation is not only an economic statistic. It is a lived, frequently discussed experience that shapes how citizens judge governments and parties. People encounter prices at the pump, the grocery aisle, and in rent, so they form views quickly and often with limited information. These views travel through media narratives and partisan discussion networks, which means perceptions can diverge from official indices and from each other. 
 
-\subsection{\textit{Economic voting, democratic accountability, and biased perceptions} }
+\subsection*{\textit{Economic voting, democratic accountability, and biased perceptions} }
 
-Economic voting is a well-established theory of voting behavior: voters reward or punish incumbents based on economic conditions (Campbell et al. 1980). Empirical evidence has supported the general premise across time and contexts, reinforcing the idea that voters, regardless of party or other differences, value a good economy (Kiewiet 1984; see Lewis-Beck and Stegmaier 2007 and Linn et al. 2010 for reviews) While this construction of the economy as a valence issue is useful and longstanding, it is insufficient to explain its full connection to voting behavior. This sociotropic outlook may be complicated by or contingent upon class (Abramson et al. 2010), income (Bartels 2016), unemployment (Wright 2012), political context (Anderson 2007), deindustrialization (Baccini and Weymouth 2021) and other factors. In short, while the principle of economic voting generally holds, it is influenced by a range of conditions. Lewis-Beck and Nadeau (2011) codify these ideas into a definition of economic voting as having three dimensions: valence, position, and patrimony, which describe the ways voters balance social and personal conditions, opinions on economic issues, and economic standing in their voting behavior. The positional dimension captures the effect of policy positions on voting, such as favoring tax cuts, reducing the deficit, or expanding public assistance  (e.g. Alvarez and Nagler 1995; 1998), while the patrimony dimension focuses on relative economic status and wealth, as represented by property and asset ownership (e.g. Costa Lobo 2013; Quinlan and Okolikj 2022). 
+Economic voting is a well-established theory of voting behavior: voters reward or punish incumbents based on economic conditions \citep{campbell_american_1980}. Empirical evidence has supported the general premise across time and contexts, reinforcing the idea that voters, regardless of party or other differences, value a good economy (\citealt{kiewiet_macroeconomics_1984}; see \citealt{lewis-beck_economic_2007} and \citealt{leighley_economics_2010} for reviews). While this construction of the economy as a valence issue is useful and longstanding, it is insufficient to explain its full connection to voting behavior. This sociotropic outlook may be complicated by or contingent upon class \citep{abramson_change_2010}, income \citep{bartels_unequal_2016}, unemployment \citep{wright_unemployment_2012}, political context \citep{anderson_end_2007}, deindustrialization  \citep{baccini_gone_2021} and other factors. In short, while the principle of economic voting generally holds, it is influenced by a range of conditions. \citet{lewis-beck_economic_2011} codify these ideas into a definition of economic voting as having three dimensions: valence, position, and patrimony, which describe the ways voters balance social and personal conditions, opinions on economic issues, and economic standing in their voting behavior. The positional dimension captures the effect of policy positions on voting, such as favoring tax cuts, reducing the deficit, or expanding public assistance  (e.g. \citealt{alvarez_economics_1995}; \citeyear{alvarez_economics_1998})
+, while the patrimony dimension focuses on relative economic status and wealth, as represented by property and asset ownership (e.g. \citealt{costa_lobo_dimensions_2013}; \citealt{quinlan_patrimonial_2022}). 
 
-Inflation’s salience for the first time in decades offers a renewed opportunity to examine the dimensions of economic voting, motivated reasoning, and the tradeoffs voters make between pocketbook and sociotropic concerns. Retrospective analysis (Verstyuk 2004) predicts support for the Republican party during periods of high inflation, particularly in presidential elections from 1944-1992, and pre-election polls suggested that inflation might drive vote choice in the 2022 midterm elections (Montanaro 2022; Safarpour et al. 2022), however Mutz and Mansfield (2024) find little evidence that it did so. Afzal’s (2024a; 2024b) work with ANES Pilot Study data collected early in the 2024 presidential election cycle found that support for the incumbent is conditioned by personal economic difficulties and experience with inflation, particularly for voters with lower levels of education. Partisan motivated reasoning  indicates that voter perceptions of inflation will be more favorable for those who identify with the incumbent party (Bartels 2002; Evans and Andersen 2006; Evans and Pickup 2010; Gerber and Huber 2010; Enns et al. 2012; Dickerson and Ondercin 2017; Donovan et al. 2020). The severity of inflation may complicate this relationship (Dickerson 2016) and minimize partisan differences when voters experience similar economic conditions (Parker-Stephen 2013; Stanig 2013). This paper adds to the limited empirical work on the influence of inflation on vote choice in modern U.S. presidential elections by using a large sample of voters in a battleground state. 
+Inflation’s salience for the first time in decades offers a renewed opportunity to examine the dimensions of economic voting, motivated reasoning, and the tradeoffs voters make between pocketbook and sociotropic concerns. Retrospective analysis \citep{verstyuk_partisan_2004} predicts support for the Republican party during periods of high inflation, particularly in presidential elections from 1944-1992, and pre-election polls suggested that inflation might drive vote choice in the 2022 midterm elections \citep{montanaro_poll_2022,safarpour_abortion_2022}, however \citet{mutz_inflation_2024} find little evidence that it did so. Afzal's (\citeyear{afzal_economic_2024}; \citeyear{afzal_economic_2024-1})
+ work with ANES Pilot Study data collected early in the 2024 presidential election cycle found that support for the incumbent is conditioned by personal economic difficulties and experience with inflation, particularly for voters with lower levels of education. Partisan motivated reasoning  indicates that voter perceptions of inflation will be more favorable for those who identify with the incumbent party \citep{bartels_beyond_2002, evans_political_2006,evans_reversing_2010,gerber_partisanship_2010,enns_consequences_2012,dickerson_conditional_2017,donovan_motivated_2020}. The severity of inflation may complicate this relationship \citep{dickerson_economic_2016} and minimize partisan differences when voters experience similar economic conditions \citep{parker-stephen_tides_2013,stanig_political_2013}. This paper adds to the limited empirical work on the influence of inflation on vote choice in modern U.S. presidential elections by using a large sample of voters in a battleground state. 
 
-\subsection{\textit{Michigan as a strategic case}}
+\subsection*{\textit{Michigan as a strategic case}}
 
 Michigan serves as a compelling case study for how inflation perceptions intersect with political dynamics. As a competitive swing state, even small shifts in attitudes toward prices can tip statewide outcomes. The state’s economy is diverse: industrial and logistics corridors in the south contrast with tourism and service-oriented counties in the north. This variety produces different price environments, commuting patterns, and media markets, all of which shape how residents both experience and interpret inflation.
 
@@ -116,9 +126,9 @@ Michigan’s strategic importance is further magnified by its growing role in pr
 
 Taken together, Michigan’s economic heterogeneity, households’ lived cost pressures, partisan political framing, and rising importance in national party strategy make it an especially instructive microcosm. It is a site where local economic structures, everyday struggles, and partisan identity interact, shaping both perceptions of inflation and their potential political consequences.
 
-\section{Materials and Methods}
+\section*{Research Design and Methods}
 
-\subsection{\textit{Data}}
+\subsection*{\textit{Survey design and data}}
 
 We collected original data on inflation perceptions using the State of the State Survey (SOSS), a long-running public opinion survey conducted by the Institute for Public Policy and Social Research (IPPSR) at Michigan State University.\footnote{https://ippsr.msu.edu/survey-research/state-state-survey-soss/soss-data} The SOSS has been widely used by scholars and policymakers to track public opinion in Michigan, and it provides a reliable platform for measuring political and economic attitudes. For this project, our survey module was fielded between September 23 and October 10, 2024.
 
@@ -126,13 +136,23 @@ The survey relied on a mixed-mode design that combined online and phone intervie
 
 The survey module addressed three guiding questions. First, to what extent do political factors such as partisan identity, presidential approval, and 2024 vote intention shape perceptions of inflation relative to demographic and household characteristics? Second, do these political and demographic influences vary across domains of everyday consumption—restaurants, groceries, housing, and gasoline—or do they follow a consistent pattern across categories? Third, what do these results imply for democratic accountability, particularly whether citizens’ inflation perceptions are tied more to partisan and leadership evaluations than to underlying economic conditions?
 
-\subsection{\textit{Methods}}
+\subsection*{\textit{Measurement of inflation perceptions}}
+
 
 Our dependent variables measure perceived price changes across five domains: overall prices, restaurant meals, groceries, housing, and gasoline. Respondents were asked: “Compared with five years ago, is the price lower, the same, a little higher, or a lot higher?” with five response categories. We drop “Don’t know/Not sure” responses from the analysis, leaving a four-category ordered outcome where higher values correspond to higher perceived inflation.
 
 Because these responses are naturally ordered but not continuous, we estimate ordered logistic regression models. Ordered logit is appropriate when the dependent variable reflects a ranking of outcomes, as in this case from “lower” to “a lot higher,” but the distance between categories cannot be assumed equal. The model estimates the log-odds of being in a higher perception category relative to all lower categories, under the proportional odds assumption. To aid interpretation, we report exponentiated coefficients as odds ratios. An odds ratio greater than one indicates that the predictor increases the likelihood of perceiving higher inflation, while an odds ratio below one indicates a lower likelihood. Cutpoints are reported at the bottom of the tables and capture the thresholds between categories.
 
-\section{Results}
+\subsection*{\textit{Key explanatory variables and controls}}
+
+Descriptive statistics
+
+\begin{center}
+\textbf{TABLE 1 AROUND HERE}
+\end{center}
+
+
+\section*{Empirical Analysis}
 
 Table~\ref{tab:main} compares three specifications using overall price perceptions as the dependent variable. Political variables dominate across models. In the partisan identity model shown in column (1), Republicans report much higher perceived inflation than Democrats, with an odds ratio of 7.03 ($p<0.01$). Independents and others also report higher inflation than Democrats, with an odds ratio of 2.40 ($p<0.01$). Substituting presidential job approval raises explanatory power. In column (2), relative to respondents rating the Biden administration as "Excellent," those reporting "Poor" approval have 16.98 times the odds of perceiving higher inflation ($p<0.01$), while those rating "Fair" have 4.03 times the odds ($p<0.01$). Vote intentions for 2024 presidential election show a similar structure. As shown in column (3), Trump supporters report 10.22 times the odds of perceiving higher inflation than Harris supporters ($p<0.01$), and other candidate supporters report 2.96 times the odds ($p<0.01$).  
 
@@ -143,36 +163,52 @@ Model fit improves once leader approval and vote choice are included. The pseudo
 
 
 \begin{center}
-\textbf{TABLE 1 AROUND HERE}
+\textbf{TABLE 2 AROUND HERE}
 \end{center}
 
 Tables~\ref{tab:pol}--\ref{tab:vot} repeat the analysis across four item categories. The politicization of perceptions is evident in every category but is strongest for groceries and gasoline. In the partisan model, Republicans are nearly six times as likely as Democrats to perceive higher grocery prices (OR = 5.90, $p<0.01$) and more than eight times as likely to perceive higher gasoline prices (OR = 8.47, $p<0.01$). Similar gaps appear in the job approval and vote intention models, with particularly large coefficients for gas. These results indicate that frequently purchased and highly visible goods are most susceptible to partisan framing.  
 
-Housing perceptions show a somewhat different pattern. Although Republicans and Trump supporters still report higher inflation, home ownership strongly reduces perceived housing inflation (OR = 0.43 to 0.45, $p<0.01$). People who own their homes are less likely to say housing costs have gone up, which suggests that owning a home shields them from feeling price increases in the housing market. This pattern is consistent with research showing that home ownership provides a degree of insulation from price increases. Homeowners with fixed-rate mortgages face stable monthly payments and are not directly exposed to rent hikes, so they often perceive less inflation in housing (CITE). By contrast, renters experience inflation more directly as rents adjust at lease renewal, which helps explain their higher sensitivity (CITE). At the same time, homeowners may benefit from viewing their property as a hedge against inflation, reinforcing the perception that they are less vulnerable to rising housing costs.
+Housing perceptions show a somewhat different pattern. Although Republicans and Trump supporters still report higher inflation, home ownership strongly reduces perceived housing inflation (OR = 0.43 to 0.45, $p<0.01$). People who own their homes are less likely to say housing costs have gone up, which suggests that owning a home shields them from feeling price increases in the housing market. This pattern is consistent with research showing that home ownership provides a degree of insulation from price increases. Homeowners with fixed-rate mortgages face stable monthly payments and are not directly exposed to rent hikes, so they often perceive less inflation in housing \citep{ahnEffectsMonetaryPolicy2024,piccoloHomeownershipAttentionInflation2025,dohHeterogeneityHouseholdInflation2025}. By contrast, renters experience inflation more directly as rents adjust at lease renewal, which helps explain their higher sensitivity \citep{koenigerTransmissionMonetaryPolicy2022}. At the same time, homeowners may benefit from viewing their property as a hedge against inflation, reinforcing the perception that they are less vulnerable to rising housing costs.
 
-Gender gaps are consistent across categories. Women report higher perceived inflation in restaurants, groceries, housing, and gasoline, with odds ratios between 1.4 and 2.2 ($p<0.01$). This finding aligns with prior work showing that women systematically perceive or expect higher inflation than men, even after controlling for demographic and socioeconomic factors (CITE). One explanation is differential exposure among them. Women are often more involved in household purchasing, particularly for groceries and other frequently bought goods, which increases the salience of rising prices (CITE). These patterns suggest that inflation perceptions are not only politicized but also gendered, reflecting systematic differences in how men and women experience and interpret price changes. 
+Gender gaps are consistent across categories. Women report higher perceived inflation in restaurants, groceries, housing, and gasoline, with odds ratios between 1.4 and 2.2 ($p<0.01$). This finding aligns with prior work showing that women systematically perceive or expect higher inflation than men, even after controlling for demographic and socioeconomic factors \citep{corduasGenderDifferencesPerception2022}. One explanation is differential exposure among them. Women are often more involved in household purchasing, particularly for groceries and other frequently bought goods, which increases the salience of rising prices \citep{}. These patterns suggest that inflation perceptions are not only politicized but also gendered, reflecting systematic differences in how men and women experience and interpret price changes. 
 
 Age, income, and education again have limited or inconsistent effects, with the exception that middle-income households between 60 thousand dollars to 99 thousand dollars perceive lower gasoline inflation than lower-income households. 
 
 \begin{center}
-\textbf{TABLES 2-4 AROUND HERE}
+\textbf{TABLES 3-5 AROUND HERE}
 \end{center}
 
 Taken together, the results indicate that inflation perceptions in Michigan are politicized and gendered. Political affiliation, leader approval, and vote choice are the most consistent predictors, while local economic fundamentals and standard demographics explain relatively little. Housing stands out as the one domain where economic position, specifically home ownership, exerts a strong protective effect. Gasoline and groceries, by contrast, are categories where political divisions are most visible. The overall pattern suggests that evaluations of government performance and partisan loyalties filter how citizens interpret price changes, raising questions about the role of economic reality in democratic accountability.  
 
-\section{Discussion}
+\section*{Conclusion}
 
-Our findings show that inflation perceptions in Michigan are strongly politicized. Partisan identity, presidential approval, and vote intention are the most powerful predictors, with leader approval in particular producing very large differences. This aligns with research on motivated reasoning in economic perceptions (CITE). Demographic effects are smaller but consistent. Women report higher perceived inflation across all domains, echoing prior evidence of a gender gap in inflation perceptions. Home ownership reduces perceptions of rising housing costs, likely because owners are shielded from rent increases and benefit from fixed mortgage payments.
+Our findings show that inflation perceptions in Michigan are strongly politicized. Partisan identity, presidential approval, and vote intention are the most powerful predictors, with leader approval in particular producing very large differences. This pattern aligns with research on motivated reasoning in economic perceptions \citep{dickerson_conditional_2017,bisgaard_reconsidering_2016,farhartInflationExpectationsPolitical2026,kavetsosNotBadThought2025}. Demographic effects are smaller but consistent. Women report higher perceived inflation across all domains, echoing prior evidence of a gender gap in inflation perceptions. Homeownership reduces perceptions of rising housing costs, likely because owners are shielded from rent increases and benefit from stable mortgage payments.
 
-Together, these results suggest that inflation perceptions are shaped less by local economic fundamentals and more by political and social identities. This politicization complicates democratic accountability, as judgments of government performance may depend as much on partisan cues and household circumstances as on actual price dynamics.
+Taken together, these results suggest that inflation perceptions are shaped less by local economic fundamentals and more by political and social identities. This politicization complicates democratic accountability, since evaluations of government performance may depend as much on partisan cues and household situations as on actual price dynamics.
 
-\section{Acknowledgments}
+The findings also point toward a productive direction for future research. The consistent association between homeownership and lower perceived housing inflation touches on the patrimony dimension of economic voting, which highlights the role of asset ownership in shaping political attitudes. While a full test of patrimony effects lies beyond the scope of this paper, these results suggest that housing assets may influence how individuals interpret economic conditions. Future work could more explicitly examine whether homeowners’ economic insulation affects both their perceptions of inflation and their broader political evaluations.
 
-The authors would like to thank...
+\section*{Acknowledgement(s)}
 
-\section{Declaration of Interest}
+An unnumbered section, e.g.\ \verb"\section*{Acknowledgements}", may be used for thanks, etc.\ if required and included \emph{in the non-anonymous version} before any Notes or References.
 
-The authors have no financial or personal relationships with other people or organizations that could inappropriately influence (bias) this work. Financial support for this research was received from the Michigan State University Institute for Public Policy and Social Research.
+
+\section*{Disclosure statement}
+
+No potential conflict of interest was reported by the authors.
+
+
+\section*{Funding}
+
+This research was supported by the 2024–2025 Michigan Applied Public Policy Research (MAPPR) Grant Awards. Additional support was provided by the USDA National Institute of Food and Agriculture through competitive grant number 2022-67023-37747, and by the Federal USDA Hatch Project “Resilience to Fiscal, Economic, Disaster and Public Health Shocks.”
+
+\section*{Author Contributions}
+
+\textbf{Ye-Rim Lee} led the data analysis, empirical modeling, and manuscript drafting. \textbf{Erika Rosebrook} conducted the literature review and contributed to the refinement of the theoretical framing. \textbf{Mark Skidmore, Scott Loveridge, and Dusan Paredes} contributed to survey design, provided methodological and interpretive feedback, and assisted in revising the manuscript. These three collaborators are listed in alphabetical order by last name. All authors reviewed and approved the final version.
+
+\section*{Notes on contributor(s)}
+
+An unnumbered section, e.g.\ \verb"\section*{Notes on contributors}", may be included \emph{in the non-anonymous version} if required. A photograph may be added if requested.
 
 
 % no appendix header/lettering
@@ -206,7 +242,7 @@ The authors have no financial or personal relationships with other people or org
 \newpage
 
 \bibliographystyle{apalike}
-\bibliography{Bibliography}
+\bibliography{LaTeX/inflation-paper}
 
 
 

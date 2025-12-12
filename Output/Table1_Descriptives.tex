@@ -1,20 +1,57 @@
 \begin{table}[htbp]\centering
-\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
 \caption{Descriptive Statistics}
-\begin{tabular}{l*{1}{ccccc}}
+\label{tab:descriptives}
+\begin{tabular}{l p{6.0cm} c c c c}
 \hline\hline
-                    &        mean&          sd&         min&         max&       count\\
+Variable & Description & Mean & SD & Min & Max \\
 \hline
-Overall             &        3.65&        0.59&           1&           4&         980\\
-age                 &       51.22&       17.60&          20&          94&        1000\\
-Gender              &        1.55&        0.50&           1&           2&        1000\\
-RECODE of income (family's annual income)&        2.46&        1.09&           1&           4&         996\\
-educ                &        2.96&        0.91&           1&           4&        1000\\
-Home                &        1.38&        0.49&           1&           2&        1000\\
-polaff3             &        1.98&        0.84&           1&           3&        1000\\
-RUCA4               &        1.32&        0.79&           1&           4&        1000\\
+
+Age
+& Respondent age in years, calculated as survey year (2024) minus birth year
+& 51.22 & 17.60 & 20 & 94 \\
+
+Gender
+& Respondent gender (1 = male, 2 = female)
+& 1.55 & 0.50 & 1 & 2 \\
+
+Household income
+& Four-category household annual income measure:
+  below \$30K; \$30K--\$59K; \$60K--\$99K; \$100K or more
+& 2.46 & 1.09 & 1 & 4 \\
+
+Education
+& Four-category education measure:
+  no high school completion; high school graduate or GED;
+  some college or technical education; college graduate or higher
+& 2.96 & 0.91 & 1 & 4 \\
+
+Homeownership
+& Homeownership status (1 = does not own, 2 = owns home)
+& 1.38 & 0.49 & 1 & 2 \\
+
+Political affiliation
+& Party identification collapsed into three categories:
+  Independent/Other, Republican, and Democrat
+& 1.98 & 0.84 & 1 & 3 \\
+
+Rural--urban
+& Four-category Rural--Urban Commuting Area (RUCA) classification:
+  Metropolitan, Micropolitan, Small Town, and Rural
+& 1.32 & 0.79 & 1 & 4 \\
+
+Job approval
+& Approval of President Biden's job performance
+  (1 = excellent, 2 = good, 3 = fair, 4 = poor)
+& 3.00 & 1.07 & 1 & 4 \\
+
+2024 vote
+& Intended vote choice in the 2024 presidential election
+  (0 = other, 1 = Kamala Harris, 2 = Donald Trump)
+& 1.38 & 0.58 & 0 & 2 \\
+
 \hline
-Observations        &        1000&            &            &            &            \\
+Observations &  & \multicolumn{4}{c}{1,000} \\
 \hline\hline
+\multicolumn{6}{p{0.9\linewidth}}{\footnotesize Source: Author's own creation using SOSS survey data.}
 \end{tabular}
 \end{table}

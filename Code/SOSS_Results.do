@@ -35,7 +35,29 @@ local lab_Q5years_3 "Home"
 local lab_Q5years_4 "Restaurant"
 local lab_Q5years_5 "Overall"
 
+**# Descriptive Statistics
+* Key variables for descriptives
+local descvars ///
+    age ///
+    gender ///
+    income4 ///
+    educ ///
+    home ///
+    polaff3 ///
+    RUCA4
 
+estpost summarize Q5years_5 age gender income4 educ home polaff3 RUCA4, detail
+
+summarize Q5years_5 age RUCA4 income4 educ gender home polaff3 PO1 ippsr120p
+esttab using "$outputpath/table_descriptives.tex", ///
+    replace ///
+    cells("mean(fmt(2)) sd(fmt(2)) min(fmt(0)) max(fmt(0)) count(fmt(0))") ///
+    label ///
+    nomtitles ///
+    nonumber ///
+    title("Descriptive Statistics")
+
+	
 **# 1) Fit models 
 ologit Q5years_5 c.age##c.age i.RUCA4 i.income4 i.educ i.gender ib2.home ib3.polaff3, or baselevels vce(robust)
 
